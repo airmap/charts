@@ -4,6 +4,9 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ template "keycloak.fullname" . }}
+  {{- if .Values.keycloak.namespace }}
+  namespace: {{ .Values.keycloak.namespace }}
+  {{- end}}
 {{- with $ingress.annotations }}
   annotations:
 {{ toYaml . | indent 4 }}

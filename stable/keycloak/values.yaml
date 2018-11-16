@@ -9,6 +9,10 @@ clusterDomain: cluster.local
 keycloak:
   replicas: 1
 
+  ## Optionally supply a namespace and service account
+  # namespace: kc-auth
+  # serviceAccountName: auth-sa
+
   image:
     repository: jboss/keycloak
     tag: 4.5.0.Final

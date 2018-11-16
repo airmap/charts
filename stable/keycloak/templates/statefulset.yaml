@@ -10,6 +10,9 @@ metadata:
     chart: {{ template "keycloak.chart" . }}
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
+  {{- if .Values.keycloak.namespace }}
+  namespace: {{ .Values.keycloak.namespace }}
+  {{- end}}
 spec:
   selector:
     matchLabels:
@@ -21,6 +24,9 @@ spec:
   updateStrategy:
     type: RollingUpdate
   template:
+    {{- if .Values.keycloak.serviceAccountName }}
+    serviceAccountName: {{ .Values.keycloak.serviceAccountName }}
+    {{- end}}
     metadata:
       labels:
         app: {{ template "keycloak.name" . }}

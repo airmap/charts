@@ -8,6 +8,9 @@ metadata:
     heritage: {{ .Release.Service }}
     release: {{ .Release.Name }}
   name: {{ template "keycloak.fullname" . }}
+  {{- if .Values.keycloak.namespace }}
+  namespace: {{ .Values.keycloak.namespace }}
+  {{- end}}
 spec:
   selector:
     matchLabels:
